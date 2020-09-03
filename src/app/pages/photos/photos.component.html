@@ -1,0 +1,162 @@
+<app-loader *ngIf="loading"></app-loader>
+<section class="hero is-medium is-dark is-bold animate__animated animate__fadeInDown" *ngIf="user && !loading">
+  <div class="hero-body">
+    <div class="container">
+
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-128x128 back">
+            <img class="is-rounded" [src]="user.profile_image.large">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <h1 class="title" style="margin-bottom: 3px !important">
+              {{user.name}}
+            </h1>
+            <a [href]="user.links.html" target="_blank" title="Ir a Unsplash">
+              <h3 class="subtitle has-text-weight-light">
+                <img  src="./assets/svg/unsplash.svg" style="height: 20px; color: white;">&nbsp;{{user.username}}
+              </h3>
+            </a>
+            <p>
+              {{user.bio}}
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item" *ngIf="user.instagram_username"  href="https://www.instagram.com/{{user.instagram_username}}/?hl=es-la" target="_blank">
+                <span class="icon is-small"><i class="fab fa-instagram"></i></span>
+              </a>
+              <a class="level-item" href="https://www.facebook.com/alejandro.alas7536" target="_blank">
+                <span class="icon is-small"><i class="fab fa-facebook"></i></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+      <br>
+      <br>
+      <br>
+
+      <div class="columns">
+        <div class="column is-12" *ngIf="stats">
+
+          <nav class="level is-mobile">
+            <div class="level-item">
+              <div class="media-left">
+                <p class="heading"><i class="far fa-eye"></i> Views</p>
+                <p class="title has-text-weight-light">{{stats.views.total | number}}</p>
+                <span class="is-size-7">+ {{stats.views.historical.change | number}} últimos 30 días</span>
+
+              </div>
+            </div>
+            <div class="level-item">
+              <div>
+                <p class="heading"><i class="far fa-download"></i> Donwloads</p>
+                <p class="title has-text-weight-light">{{stats.downloads.total | number}}</p>
+                <span class="is-size-7">+ {{stats.downloads.historical.change | number}} últimos 30 días</span>
+
+              </div>
+            </div>
+            <div class="level-item">
+              <div>
+                <p class="heading"><i class="fas fa-users"></i> Followers</p>
+                <p class="title has-text-weight-light">{{user.followers_count | number}}</p>
+              </div>
+            </div>
+            <div class="level-item">
+              <div>
+                <p class="heading"><i class="fas fa-image"></i> Photos</p>
+                <p class="title has-text-weight-light">{{user.total_photos | number}}</p>
+              </div>
+            </div>
+
+          </nav>
+
+        </div>
+      </div>
+
+      <br>
+    </div>
+  </div>
+</section>
+<br>
+
+<div class="container animate__animated animate__fadeIn" *ngIf="rphotos && !loading">
+  <h1 class="title has-text-weight-semibold">Fotografías recientes</h1>
+  <br>
+  <div class="columns is-multiline">
+
+    <div class="card column is-3" *ngFor="let photo of rphotos">
+      <div class="card-image">
+        <figure class="image is-4by3" [ngStyle]="{'background-image': 'url('+photo.urls.regular+')'}"
+          style="background-size: cover; background-position: center; border-radius: 10px;">
+          <div class="columns">
+            <div class="column">
+              <a data-fancybox="gallery" href="{{photo.urls.full}}" data-caption="{{photo.alt_description}}"
+                title="Ver">
+                <i class="fas fa-expand-alt" style="color: white; padding: 10px;">
+                </i>
+              </a>
+
+            </div>
+            <div class="column has-text-right date">
+              <span class="is-size-7" style="color: white; padding: 10px;"><i
+                  class="far fa-calendar"></i>&nbsp;{{photo.created_at | date}}</span>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <footer class="card-footer" style="margin-top: 1rem;">
+        <br>
+        <span class="card-footer-item"><i class="far fa-eye"></i>&nbsp;{{photo.statistics.views.total | number}}</span>
+        <span class="card-footer-item"><a [href]="photo.links.download" target="_blank" title="Descargar"><i
+              class="far fa-arrow-down"></i></a>
+          &nbsp;{{photo.statistics.downloads.total | number}}</span>
+        <span class="card-footer-item" title="Solo puedes dar like en Unsplash"><i class="far fa-heart" style="color: red"></i>
+          &nbsp;{{ photo.likes | number}}</span>
+      </footer>
+    </div>
+  </div>
+
+</div>
+<br>
+<br>
+<div class="container animate__animated animate__fadeIn" *ngIf="photos && !loading">
+  <h1 class="title has-text-weight-semibold">Fotografías Populares</h1>
+  <br>
+  <div class="columns is-multiline">
+    <div class="card column is-3" *ngFor="let photo of photos">
+      <div class="card-image">
+        <figure class="image is-4by3" [ngStyle]="{'background-image': 'url('+photo.urls.regular+')'}"
+          style="background-size: cover; background-position: center; border-radius: 10px;">
+          <div class="columns">
+            <div class="column">
+              <a data-fancybox="gallery" href="{{photo.urls.full}}" data-caption="{{photo.alt_description}}"
+                title="Ver">
+                <i class="fas fa-expand-alt" style="color: white; padding: 10px; ">
+                </i>
+              </a>
+
+            </div>
+            <div class="column has-text-right">
+              <span class="is-size-7" style="color: white; padding: 10px;"><i
+                  class="far fa-calendar"></i>&nbsp;{{photo.created_at | date}}</span>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <footer class="card-footer is-movile" style="margin-top: 1rem;">
+        <br>
+        <span class="card-footer-item"><i class="far fa-eye"></i>&nbsp;{{photo.statistics.views.total | number}}</span>
+        <span class="card-footer-item"><a [href]="photo.links.download" target="_blank" title="Descargar"><i
+              class="far fa-arrow-down"></i></a>
+          &nbsp;{{photo.statistics.downloads.total | number}}</span>
+        <span class="card-footer-item" title="Solo puedes dar like en Unsplash"><i class="far fa-heart" style="color: red"></i>
+          &nbsp;{{ photo.likes | number}}</span>
+      </footer>
+    </div>
+  </div>
+
+</div>

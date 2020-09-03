@@ -1,0 +1,18 @@
+.card{
+  border: 0px !important;
+  box-shadow: 0;
+}
+
+.card-footer{
+  border: 0;
+}
+
+.card-footer-item{
+  border: 0;
+}
+
+figure a :hover {
+  background-color:rgba(0, 0, 0, 0.5);
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+}
