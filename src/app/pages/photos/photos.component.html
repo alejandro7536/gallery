@@ -1,5 +1,6 @@
 <app-loader *ngIf="loading"></app-loader>
-<section class="hero is-medium is-dark is-bold animate__animated animate__fadeInDown" *ngIf="user && !loading">
+
+<section class="hero is-dark animate__animated animate__fadeIn" *ngIf="user && !loading">
   <div class="hero-body">
     <div class="container">
 
@@ -35,10 +36,14 @@
           </nav>
         </div>
       </article>
-      <br>
-      <br>
-      <br>
+    </div>
+  </div>
+</section>
+<app-slideshow [photos]="photos" *ngIf="rphotos.length > 0" ></app-slideshow>
 
+<section class="hero is-dark animate__animated animate__fadeInDown" *ngIf="user && !loading">
+  <div class="hero-body">
+    <div class="container">
       <div class="columns">
         <div class="column is-12" *ngIf="stats">
 
@@ -77,14 +82,17 @@
         </div>
       </div>
 
-      <br>
     </div>
   </div>
 </section>
 <br>
+<br>
+<br>
+
 
 <div class="container animate__animated animate__fadeIn" *ngIf="rphotos && !loading">
   <h1 class="title has-text-weight-semibold">Fotografías recientes</h1>
+
   <br>
   <div class="columns is-multiline">
 

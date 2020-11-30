@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { SlideshowComponent } from './shared/slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhotosComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    SlideshowComponent
   ],
   imports: [
     BrowserModule,

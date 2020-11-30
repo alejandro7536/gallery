@@ -25,6 +25,7 @@
     "bulma-extensions": "^6.2.7",
     "jquery": "^3.5.1",
     "rxjs": "~6.5.5",
+    "swiper": "^6.3.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

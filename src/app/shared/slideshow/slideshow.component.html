@@ -1,0 +1,34 @@
+<!-- Slider main container -->
+<div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide" *ngFor="let photo of photos | slice:0:8" [ngStyle]="{
+        'background-size': 'cover',
+        'background-position': 'center',
+        'background-image': 'url('+photo.urls.full+')'
+      }">
+      <div class="photo-description">
+        <footer class="card-footer" style="margin-top: 1rem;">
+          <br>
+          <span class="card-footer-item" style="color: white !important;"><i class="far fa-eye"></i>&nbsp;{{photo.statistics.views.total | number}}</span>
+          <span class="card-footer-item" style="color: white !important;"><a [href]="photo.links.download" target="_blank" title="Descargar"><i
+                class="far fa-arrow-down"></i></a>
+            &nbsp;{{photo.statistics.downloads.total | number}}</span>
+          <span class="card-footer-item" title="Solo puedes dar like en Unsplash" style="color: white !important;"><i class="far fa-heart"></i>
+            &nbsp;{{ photo.likes | number}}</span>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div (click)="onSlidePrevius()"  class="swiper-button-prev"></div>
+  <div (click)="onSlideNext()"  class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>

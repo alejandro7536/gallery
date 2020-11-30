@@ -29,13 +29,16 @@
               "node_modules/bulma-extensions/dist/css/bulma-extensions.min.css",
               "node_modules/bulma-extensions/bulma-tooltip/dist/css/bulma-tooltip.min.css",
               "node_modules/animate.css/animate.css",
+              "node_modules/swiper/swiper-bundle.min.css",
               "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css"
 
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bulma-extensions/dist/js/bulma-extensions.min.js",
-              "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js"
+              "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js",
+              "node_modules/swiper/swiper-bundle.min.js"
+
 
             ]
           },
